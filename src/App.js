@@ -1,21 +1,19 @@
 import "./App.css";
-import AddUsers from "./components/AddUsers";
-import AllUsers from "./components/AllUsers";
-import CodeForInterview from "./components/CodeForInterview";
-import Navbar from "./components/Navbar";
-import { BrowserRouter ,  Route, Routes } from "react-router-dom";
-import NotFound from "./components/NotFound";
+import Home from "./pages/Home";
+import {} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import AddUser from './pages/AddUser';
+import EditUser from './pages/EditUser';
+
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-<Routes>
-      <Route exact path="/" element={<CodeForInterview />} />
-      <Route exact path="/all" element={<AllUsers />} />
-      <Route exact path="/add" element={<AddUsers />} />
-      <Route path="*" element={<NotFound/>} />
+    <div>
+      <Routes>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route exact path="/addUser" element={<AddUser />}></Route>
+        <Route exact path="/editUser/:id" element={<EditUser />}></Route>
       </Routes>
-    </ BrowserRouter>
+    </div>
   );
 }
 
