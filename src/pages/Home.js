@@ -14,8 +14,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
 import { makeStyles } from "@material-ui/core/styles";
-import {useNavigate} from "react-router-dom"
-
+import { useNavigate } from "react-router-dom";
 
 const useButtonStyles = makeStyles((theme) => ({
   root: {
@@ -48,9 +47,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-
-
-
 const useStyles = makeStyles({
   table: {
     marginTop: 100,
@@ -60,10 +56,14 @@ const useStyles = makeStyles({
 
 function Home() {
   const classes = useStyles();
+
   const buttonStyles = useButtonStyles();
-  const navigate = useNavigate ();
+
+  const navigate = useNavigate();
   let dispatch = useDispatch();
+
   const { users } = useSelector((state) => state.data);
+
   useEffect(() => {
     dispatch(loadUsers());
   }, []);
@@ -73,10 +73,18 @@ function Home() {
       dispatch(deleteUsers(id));
     }
   };
+  const adduserhandler = () => {
+    navigate("/addUser");
+  };
   return (
     <div>
       <div className={buttonStyles.root}>
-        <Button style={{margin:"15px"}} variant="contained" color="secondary" onClick={()=>navigate("/addUser")}>
+        <Button
+          style={{ margin: "15px" }}
+          variant="contained"
+          color="secondary"
+          onClick={adduserhandler}
+        >
           Add User
         </Button>
       </div>
@@ -106,12 +114,9 @@ function Home() {
                   <StyledTableCell align="center">
                     {user.address}
                   </StyledTableCell>
-                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center">
                   <div className={buttonStyles.root}>
-                    <ButtonGroup
-                      variant="outlined"
-                     
-                    >
+                    <ButtonGroup variant="outlined">
                       <Button
                         style={{ marginRight: "5px" }}
                         color="primary"
@@ -119,9 +124,15 @@ function Home() {
                       >
                         Delete
                       </Button>
-                      <Button color="secondary"  onClick={() => navigate(`/editUser/${user.id}`)}>Edit</Button>
+                      <Button
+                        color="secondary"
+                        onClick={() => navigate(`/editUser/${user.id}`)}
+                      >
+                        Edit
+                      </Button>
                     </ButtonGroup>
                   </div>
+                  </StyledTableCell>
                 </StyledTableRow>
               ))}
           </TableBody>

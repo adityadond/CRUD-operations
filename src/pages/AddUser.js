@@ -22,6 +22,7 @@ function AddUser() {
   let navigate = useNavigate();
 
   let dispatch = useDispatch();
+  
   const handleInputChange = (e) => {
     let { name, value } = e.target;
     setState({ ...state, [name]: value });
@@ -40,7 +41,7 @@ function AddUser() {
   return (
     <div className="main">
       <Button
-        style={{ width: "100px", marginTop: "20px" }}
+        style={{ width: "100px", marginTop: "20px",marginBottom:"20px",marginRight:"600px" }}
         variant="contained"
         color="secondary"
         type="submit"
